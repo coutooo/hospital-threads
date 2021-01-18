@@ -18,6 +18,8 @@
 #include "settings.h"
 #include "thread.h"
 
+#define SIGNAL_TERMINATE 9997
+
 typedef struct
 {
    struct

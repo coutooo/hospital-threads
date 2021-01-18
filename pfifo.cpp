@@ -46,7 +46,7 @@ void insert_pfifo(PriorityFIFO *pfifo, uint32_t id, uint32_t priority)
       cond_wait(&pfifo->isNotFull, &pfifo->mutex);
    }
    require(pfifo != NULL, "NULL pointer to FIFO");                              // a false value indicates a program error
-   require(id <= MAX_ID, "invalid id");                                         // a false value indicates a program error
+   require(id <= MAX_ID || id == SIGNAL_TERMINATE, "invalid id");                // a false value indicates a program error
    require(priority > 0 && priority <= MAX_PRIORITY, "invalid priority value"); // a false value indicates a program error
    require(!full_pfifo(pfifo), "full FIFO");                                    // in a shared fifo, it may not result from a program error!
 
